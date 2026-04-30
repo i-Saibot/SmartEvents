@@ -4,7 +4,6 @@ project(SmartEvents)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Флаги для Linux x86 (32-bit)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32 -fPIC -O3 -w -DLINUX -fno-plt -fpermissive")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32 -static-libgcc -static-libstdc++")
 
@@ -14,14 +13,12 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/lib/SQLiteCpp/include
 )
 
-# Поиск всех исходных файлов .cpp внутри подпапки SmartEvents
 file(GLOB_RECURSE SRC_FILES "SmartEvents/src/*.cpp")
 file(GLOB_RECURSE SDK_FILES "SmartEvents/lib/samp-sdk/*.cpp")
 file(GLOB_RECURSE SQLITE_FILES "SmartEvents/lib/SQLiteCpp/src/*.cpp")
 
 set(SOURCES ${SRC_FILES} ${SDK_FILES} ${SQLITE_FILES})
 
-# Вывод найденных файлов для проверки
 message(STATUS "--- Found sources in: ${SOURCES}")
 
 if(NOT SOURCES)
@@ -30,7 +27,6 @@ endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-# Линковка системной sqlite3
 target_link_libraries(${PROJECT_NAME} sqlite3)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
