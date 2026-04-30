@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SmartEvents/SmartEvents.vcxproj" Id="88f527fe-8b4c-4c68-906c-55d870d8dbb5" />
+</Solution>
