@@ -3,6 +3,7 @@
 [![license](https://img.shields.io/github/license/i-Saibot/SmartEvents)](LICENSE)
 ![Stars](https://img.shields.io/github/stars/i-Saibot/SmartEvents?style=social)
 
+
 # *SmartEvents*
 
 > A C++ plugin for SA-MP and open.mp to manage persistent time-based events (mutes, jails, etc.) without repetitive timers, using timestamp-based logic and SQLite storage.
