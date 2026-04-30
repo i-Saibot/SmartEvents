@@ -1,3 +1,8 @@
+[![release](https://img.shields.io/github/v/release/i-Saibot/SmartEvents?include_prereleases)](https://github.com/i-Saibot/SmartEvents/releases)
+[![downloads](https://img.shields.io/github/downloads/i-Saibot/SmartEvents/total)](https://github.com/i-Saibot/SmartEvents/releases)
+[![license](https://img.shields.io/github/license/i-Saibot/SmartEvents)](LICENSE)
+![Stars](https://img.shields.io/github/stars/i-Saibot/SmartEvents?style=social)
+
 
 # *SmartEvents*
 
