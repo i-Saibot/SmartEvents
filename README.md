@@ -81,7 +81,7 @@ Why is this better than decrementing every second?
 
 100 players · mute 5 hours · 15 reconnects per player only for plugin
 
-<img src="https://github.com/i-Saibot/SmartEvents/blob/main/Benchmark.png?raw=true" width="600"/>
+<img src="https://raw.githubusercontent.com/i-Saibot/SmartEvents/main/Benchmark.png" width="600"/>
 
 <details>
 <summary>Benchmark source code</summary>
