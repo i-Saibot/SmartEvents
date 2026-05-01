@@ -1,7 +1,8 @@
 [![release](https://img.shields.io/github/v/release/i-Saibot/SmartEvents?include_prereleases)](https://github.com/i-Saibot/SmartEvents/releases)
 [![downloads](https://img.shields.io/github/downloads/i-Saibot/SmartEvents/total)](https://github.com/i-Saibot/SmartEvents/releases)
 [![license](https://img.shields.io/github/license/i-Saibot/SmartEvents)](LICENSE)
-![Stars](https://img.shields.io/github/stars/i-Saibot/SmartEvents?style=social)
+[![SA-MP](https://img.shields.io/badge/SA--MP-0.3.7-blue)](https://www.sa-mp.com)
+[![open.mp](https://img.shields.io/badge/open.mp-supported-7986CB?style=flat&logo=github)](https://open.mp)
 
 # *SmartEvents*
 
