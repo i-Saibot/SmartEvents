@@ -13,7 +13,7 @@
 
 //------------------------------------------------------------------------------
 
-#define SE_PLUGIN_VERSION "1.0.0"
+#define SE_PLUGIN_VERSION "1.0.1"
 
 //------------------------------------------------------------------------------
 
@@ -90,4 +90,25 @@ public OnGameModeInit()
 #define OnGameModeInit smartevents_OnGameModeInit
 #if defined smartevents_OnGameModeInit
 	forward smartevents_OnGameModeInit();
+#endif
+
+native SE_OnPlayerDisconnect(playerid);
+
+public OnPlayerDisconnect(playerid, reason)
+{
+	SE_OnPlayerDisconnect(playerid);
+#if defined smartevents_OnPlayerDisconnect
+	return smartevents_OnPlayerDisconnect(playerid, reason);
+#else
+	return 1;
+#endif
+}
+#if defined _ALS_OnPlayerDisconnect
+	#undef OnPlayerDisconnect
+#else
+	#define _ALS_OnPlayerDisconnect
+#endif
+#define OnPlayerDisconnect smartevents_OnPlayerDisconnect
+#if defined    smartevents_OnPlayerDisconnect
+	forward smartevents_OnPlayerDisconnect(playerid, reason);
 #endif

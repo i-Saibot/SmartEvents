@@ -10,6 +10,8 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m32 -static-libgcc 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/include
     ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/lib/samp-sdk
+    ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/lib/samp-sdk/amx
     ${CMAKE_CURRENT_SOURCE_DIR}/SmartEvents/lib/SQLiteCpp/include
 )
 

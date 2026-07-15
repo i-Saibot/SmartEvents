@@ -1,4 +1,5 @@
-#include "samp-sdk/samp_sdk.hpp"
+#define HAVE_STDINT_H
+#include "samp-sdk/amx/amx.h"
 #include "player_manager.h"
 #include "event_registry.h"
 #include "database.h"
@@ -10,7 +11,7 @@
 
 //------------------------------------------------------------------------------------------------------------
 
-int32_t player_manager::addEvent(std::string_view name, std::string_view callback, const bool bOnline)
+int32_t player_manager::addEvent(AMX* amx, std::string_view name, std::string_view callback, const bool bOnline)
 {
 	try
 	{
@@ -20,8 +21,7 @@ int32_t player_manager::addEvent(std::string_view name, std::string_view callbac
 			data.name = std::string(name);
 			data.bOnline = online;
 			data.callbackName = std::string(callback);
-			data.callbackHash = callback.empty() ? constants::INVALID_CALLBACK
-				: Samp_SDK::Detail::FNV1a_Hash(std::string(callback).c_str());
+			data.amx = amx;
 			return data;
 		};
 		SQLite::Statement select(
@@ -245,7 +245,10 @@ bool player_manager::setPlayerEvent(const int32_t playerId, const int32_t eventI
 	params.timerSeconds = seconds;
 	params.issuedAt = currentTime;
 	params.expiresAt = expiresAt;
-	params.onExpire = [playerId, eventId]() { endPlayerEvent(playerId, eventId); };
+	params.onExpire = [playerId, eventId]()
+		{
+			endPlayerEvent(playerId, eventId);
+		};
 	player->setData(params);
 
 	try

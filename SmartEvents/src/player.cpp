@@ -1,8 +1,9 @@
-#include "samp-sdk/samp_sdk.hpp"
+#define HAVE_STDINT_H
+#include "samp-sdk/amx/amx.h"
+
 #include "player.h"
 #include "timers.h"
 #include "event_registry.h"
-
 
 #include <ctime>
 
@@ -50,15 +51,19 @@ void Player::endEvent(const int32_t eventId)
 		m_setTimers.erase(it->second.timerId);
 		m_mapEvents.erase(it);
 	}
-	event_registry::CallbackData callbackData = event_registry::getCallbackHash(eventId);
 
-	if (callbackData.hash != constants::INVALID_CALLBACK)
+	event_registry::EventData callbackData = event_registry::getCallbackData(eventId);
+
+	if (callbackData.amx != nullptr)
 	{
-		Samp_SDK::Detail::Caller<Samp_SDK::Pawn_Call_Type::Public>::Call(
-			callbackData.hash,
-			callbackData.name.data(),
-			std::move(m_playerId)
-		);
+		int index = 0;
+		if (amx_FindPublic(callbackData.amx, callbackData.name.data(), &index) == AMX_ERR_NONE)
+		{
+			amx_Push(callbackData.amx, static_cast<cell>(m_playerId));
+
+			cell retval = 0;
+			amx_Exec(callbackData.amx, &retval, index);
+		}
 	}
 }
 
