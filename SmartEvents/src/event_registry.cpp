@@ -2,7 +2,7 @@
 
 //------------------------------------------------------------------------------------------------------------
 
-event_registry::CallbackData event_registry::getCallbackHash(const int32_t eventId)
+event_registry::EventData event_registry::getCallbackData(const int32_t eventId)
 {
 	auto it = g_mapEvents.find(eventId);
 
@@ -10,7 +10,7 @@ event_registry::CallbackData event_registry::getCallbackHash(const int32_t event
 	{
 		return {};
 	}
-	return { it->second.callbackName, it->second.callbackHash };
+	return { it->second.amx, it->second.callbackName };
 }
 
 //------------------------------------------------------------------------------------------------------------

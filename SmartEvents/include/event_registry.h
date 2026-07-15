@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ankerl/unordered_dense.h"
+#define HAVE_STDINT_H
+#include "samp-sdk/amx/amx.h"
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -8,18 +10,13 @@ namespace event_registry
 {
 	struct EventData
 	{
+		AMX* amx = nullptr;
 		std::string name;
 		std::string callbackName;
-		uint32_t callbackHash = 0;
 		bool bOnline = true;
 	};
-	struct CallbackData
-	{
-		std::string name;
-		uint32_t hash = 0;
-	};
 	inline ankerl::unordered_dense::map<int32_t, EventData> g_mapEvents;
-	CallbackData getCallbackHash(const int32_t eventId);
+	EventData getCallbackData(const int32_t eventId);
 }
 
 //------------------------------------------------------------------------------------------------------------
